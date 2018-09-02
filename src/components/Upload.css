@@ -1,0 +1,14 @@
+.upload--container {
+	margin: 50px 10px;
+	text-align: center;
+}
+
+.upload--container .ui.segment {
+	padding: 50px;
+}
+
+.upload--icon {
+	height: 44px;
+	width: 44px;
+	margin: auto;
+}
