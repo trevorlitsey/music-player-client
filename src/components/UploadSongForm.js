@@ -4,19 +4,7 @@ import { func } from 'prop-types';
 import React, { Component } from 'react';
 import { Container, Form, Button, Message } from 'semantic-ui-react';
 
-const UPLOAD_SONG_QUERY = gql`
-	mutation uploadSong($input: createSongInput!) {
-		createSong(input: $input) {
-			ok
-		}
-	}
-`;
-
 class UploadSongForm extends Component {
-	static propTypes = {
-		uploadSong: func.isRequired,
-	};
-
 	state = {
 		nameError: null,
 		fileError: null,
@@ -126,6 +114,4 @@ class UploadSongForm extends Component {
 	}
 }
 
-export default graphql(UPLOAD_SONG_QUERY, { name: 'uploadSong' })(
-	UploadSongForm
-);
+export default UploadSongForm;

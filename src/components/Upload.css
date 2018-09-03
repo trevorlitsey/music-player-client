@@ -4,7 +4,25 @@
 }
 
 .upload--container .ui.segment {
+	padding: 10px;
+}
+
+.upload--container .ui.segment > div {
+	height: 100%;
+	width: 100%;
+	border: 1px dashed rgba(0, 0, 0, 0.2);
 	padding: 50px;
+}
+
+.upload--container .ui.segment > div.is-active {
+	background: rgb(20, 255, 20, 0.2);
+}
+.upload--container .ui.segment > div.is-invalid {
+	background: rgba(255, 96, 68, 0.2);
+}
+
+.upload--container .ui.segment > div:hover {
+	cursor: pointer;
 }
 
 .upload--icon {

@@ -1,20 +1,11 @@
 import React from 'react';
 import { gql, graphql } from 'react-apollo';
 
-const Home = ({ data: { allSongs = [] } }) => (
+const Home = () => (
 	<div>
 		<h1>These are some songs</h1>
-		{allSongs.map(s => <h1 key={s.id}>{s.name}</h1>)}
+		<p>Soon to come!</p>
 	</div>
 );
 
-const allSongsQuery = gql`
-	{
-		allSongs {
-			id
-			name
-		}
-	}
-`;
-
-export default graphql(allSongsQuery)(Home);
+export default Home;
