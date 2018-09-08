@@ -13,13 +13,13 @@ class Nav extends Component {
 			<Segment inverted style={{ borderRadius: 0 }}>
 				<Menu inverted pointing secondary>
 					<Menu.Item
-						name="upload"
-						active={activeItem === 'home'}
+						name="all songs"
+						active={activeItem === 'messages'}
 						onClick={this.handleItemClick}
 					/>
 					<Menu.Item
-						name="all songs"
-						active={activeItem === 'messages'}
+						name="upload"
+						active={activeItem === 'home'}
 						onClick={this.handleItemClick}
 					/>
 					<Menu.Item

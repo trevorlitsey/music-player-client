@@ -1,5 +1,7 @@
 import React from 'react';
 import { List } from 'semantic-ui-react';
+import { fetchSongs } from '../actions';
+import { connect } from 'react-redux';
 
 const Song = ({ name, artist }) => (
 	<List.Item>
@@ -11,13 +13,27 @@ const Song = ({ name, artist }) => (
 	</List.Item>
 );
 
-const ListExampleDivided = ({ songs }) =>
-	songs && songs.length ? (
-		<List divided relaxed>
-			{songs.map(Song)}
-		</List>
-	) : (
-		<i>none yet</i>
-	);
+class SongList extends React.Component {
+	render() {
+		const { songs } = this.props;
 
-export default ListExampleDivided;
+		return songs && Object.keys(songs).length ? (
+			<List divided relaxed>
+				{Object.entries(songs).map(([key, values]) => (
+					<Song key={key} {...values} />
+				))}
+			</List>
+		) : (
+			<i>none yet</i>
+		);
+	}
+}
+
+const mapStateToProps = ({ data: { songs } }) => {
+	return { songs };
+};
+
+export default connect(
+	mapStateToProps,
+	fetchSongs
+)(SongList);

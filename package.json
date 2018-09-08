@@ -13,11 +13,13 @@
 	},
 	"dependencies": {
 		"date-fns": "^1.29.0",
-		"extract-files": "^4.0.0",
 		"react": "^16.0.0",
 		"react-dom": "^16.0.0",
 		"react-dropzone": "^5.0.1",
+		"react-redux": "^5.0.7",
 		"react-router-dom": "^4.2.2",
+		"redux": "^3.7.2",
+		"redux-thunk": "^2.3.0",
 		"semantic-ui-css": "^2.3.3",
 		"semantic-ui-react": "^0.82.3"
 	},

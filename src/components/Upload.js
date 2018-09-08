@@ -1,9 +1,8 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import axios from 'axios';
-import { format } from 'date-fns';
-import { Segment } from 'semantic-ui-react';
-import { storage } from '../firebase';
+import { Segment, Progress } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { uploadSong } from '../actions';
 
 import './Upload.css';
 
@@ -12,25 +11,8 @@ class Upload extends React.Component {
 		file: null,
 	};
 
-	formatFilename = filename => {
-		const date = format(new Date(), 'YYYYMMDD');
-		const randomString = Math.random()
-			.toString(36)
-			.substring(2, 7);
-		const cleanFileName = filename.toLowerCase().replace(/[^a-z0-9]/g, '-');
-		const newFilename = `images/${date}-${randomString}-${cleanFileName}`;
-		return newFilename.substring(0, 60);
-	};
-
 	onDrop = async ([file]) => {
-		if (!file) return;
-
-		const fileRef = storage.ref().child(this.formatFilename(file.name));
-
-		fileRef.put(file).then(function(snapshot) {
-			console.log('Uploaded a blob or file!');
-			console.log(snapshot);
-		});
+		this.props.uploadSong(file);
 	};
 
 	render() {
@@ -38,8 +20,9 @@ class Upload extends React.Component {
 			<div className="upload--container">
 				<Segment>
 					<Dropzone
-						// accept="audio/*"
-						onDrop={this.onDrop}
+						onDrop={
+							this.onDrop // accept="audio/*"
+						}
 						style={{ width: '100%' }}
 						activeClassName="is-active"
 						rejectClassName="is-invalid"
@@ -55,9 +38,19 @@ class Upload extends React.Component {
 						<p>Drag and drop audio files to upload</p>
 					</Dropzone>
 				</Segment>
+				{!!this.props.uploadProgress && (
+					<Progress percent={this.props.uploadProgress} indicating />
+				)}
 			</div>
 		);
 	}
 }
 
-export default Upload;
+const mapStateToProps = ({ data: { uploadProgress } }) => {
+	return { uploadProgress };
+};
+
+export default connect(
+	mapStateToProps,
+	{ uploadSong }
+)(Upload);
