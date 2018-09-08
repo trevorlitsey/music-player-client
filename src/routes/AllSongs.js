@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '../components/Layout';
 
-const Home = () => (
+const AllSongs = () => (
 	<Layout>
 		<h1>These are some songs</h1>
-		<p>Soon to come!</p>
+		<i>Soon to come</i>
 	</Layout>
 );
 
-export default Home;
+export default AllSongs;
