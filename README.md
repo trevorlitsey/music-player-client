@@ -1,4 +1,5 @@
-# slack-clone-client
+# music-player
 
-[Watch the video to learn how it was made.](https://youtu.be/jDvOauhkEOM)
+DIY music player. Upload songs to the cloud. Play them on your phone.
 
+WIP!
