@@ -2,6 +2,7 @@ import React from 'react';
 import { List } from 'semantic-ui-react';
 import { fetchSongs } from '../actions';
 import { connect } from 'react-redux';
+import { Loader } from 'semantic-ui-react';
 
 const Song = ({ name, artist }) => (
 	<List.Item>
@@ -14,8 +15,14 @@ const Song = ({ name, artist }) => (
 );
 
 class SongList extends React.Component {
+	componentWillMount() {
+		this.props.fetchSongs();
+	}
+
 	render() {
-		const { songs } = this.props;
+		const { songs, loading } = this.props;
+
+		if (loading) return <Loader active inline="centered" />;
 
 		return songs && Object.keys(songs).length ? (
 			<List divided relaxed>
@@ -29,11 +36,11 @@ class SongList extends React.Component {
 	}
 }
 
-const mapStateToProps = ({ data: { songs } }) => {
-	return { songs };
+const mapStateToProps = ({ data: { songs, loading } }) => {
+	return { songs, loading };
 };
 
 export default connect(
 	mapStateToProps,
-	fetchSongs
+	{ fetchSongs }
 )(SongList);

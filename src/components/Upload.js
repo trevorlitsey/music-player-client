@@ -20,9 +20,8 @@ class Upload extends React.Component {
 			<div className="upload--container">
 				<Segment>
 					<Dropzone
-						onDrop={
-							this.onDrop // accept="audio/*"
-						}
+						onDrop={this.onDrop}
+						accept="audio/*"
 						style={{ width: '100%' }}
 						activeClassName="is-active"
 						rejectClassName="is-invalid"
@@ -39,7 +38,7 @@ class Upload extends React.Component {
 					</Dropzone>
 				</Segment>
 				{!!this.props.uploadProgress && (
-					<Progress percent={this.props.uploadProgress} indicating />
+					<Progress percent={this.props.uploadProgress} indicating progress />
 				)}
 			</div>
 		);

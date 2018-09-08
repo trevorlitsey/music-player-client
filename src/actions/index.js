@@ -24,6 +24,7 @@ export const uploadSong = file => dispatch => {
 			dbRef.push().set({
 				name: file.name,
 				downloadURL,
+				createdAt: new Date(),
 			});
 			dispatch({ type: 'UPDATE_UPLOAD_PROGRESS', uploadProgress: 0 });
 		});

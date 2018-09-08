@@ -3,11 +3,12 @@ export default (state = {}, action) => {
 		case 'UPDATE_UPLOAD_PROGRESS':
 			return {
 				...state,
-				uploadProgress: action.uploadProgress,
+				uploadProgress: Math.round(action.uploadProgress),
 			};
 		case 'FETCH_SONGS':
 			return {
 				...state,
+				loading: false,
 				songs: action.songs,
 			};
 		default:

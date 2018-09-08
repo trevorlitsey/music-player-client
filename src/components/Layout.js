@@ -1,11 +1,12 @@
 import React from 'react';
+import { Container } from 'semantic-ui-react';
 
 import Nav from './Nav';
 
 const Layout = ({ children }) => (
 	<div>
 		<Nav />
-		{children}
+		<Container style={{ margin: 20, padding: 20 }}>{children}</Container>
 	</div>
 );
 
