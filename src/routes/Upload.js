@@ -6,10 +6,10 @@ import SongList from '../components/SongList';
 import Upload from '../components/Upload';
 
 export default () => (
-	<Layout>
-		<Header>Upload Files</Header>
-		<Upload />
-		<Header>Recent Uploads</Header>
-		<SongList />
-	</Layout>
+  <Layout>
+    <Header>Upload Files</Header>
+    <Upload />
+    <Header>Recent Uploads</Header>
+    <SongList />
+  </Layout>
 );
