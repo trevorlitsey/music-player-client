@@ -12,7 +12,7 @@ class Upload extends React.Component {
   };
 
   onDrop = async ([file]) => {
-    this.props.uploadSong(file);
+    this.props.uploadSong(file, this.props.userId);
   };
 
   render() {
@@ -45,8 +45,8 @@ class Upload extends React.Component {
   }
 }
 
-const mapStateToProps = ({ data: { uploadProgress } }) => {
-  return { uploadProgress };
+const mapStateToProps = ({ data: { uploadProgress }, auth: { user } }) => {
+  return { uploadProgress, userId: user.uid };
 };
 
 export default connect(

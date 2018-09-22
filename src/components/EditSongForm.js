@@ -8,7 +8,7 @@ class EditSongForm extends React.Component {
   };
 
   render() {
-    const { id, trigger, name, artist } = this.props;
+    const { trigger, name, artist } = this.props;
     return (
       <Modal trigger={trigger}>
         <Modal.Header>Edit Song Info</Modal.Header>

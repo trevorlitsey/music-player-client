@@ -8,7 +8,7 @@ import Song from './Song';
 
 class SongList extends React.Component {
   componentWillMount() {
-    this.props.fetchAllSongs();
+    this.props.fetchAllSongs(this.props.userId);
   }
 
   render() {
@@ -28,8 +28,8 @@ class SongList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ data: { songs, loading } }) => {
-  return { songs, loading };
+const mapStateToProps = ({ data: { songs, loading }, auth: { user } }) => {
+  return { songs, loading, userId: user.uid };
 };
 
 export default connect(
